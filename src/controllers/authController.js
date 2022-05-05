@@ -62,9 +62,7 @@ exports.loginController = async (req, res) => {
   // Send basic account details and access token in response body and refresh token in httponly cookie.
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
-    sameSite: "none",
-    secure: true,
-    path: "/",
+    sameSite: "strict"
   });
   res.status(200).json({ username, accessToken, userImage: userImage });
 };
