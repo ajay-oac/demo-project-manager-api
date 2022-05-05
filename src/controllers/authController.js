@@ -124,8 +124,7 @@ exports.logoutController = async (req, res) => {
   await deleteRefreshToken(refreshToken);
   res.cookie("refreshToken", "", {
     httponly: true,
-    sameSite: "none",
-    secure: true,
+    sameSite: "strict",
     maxAge: 0,
   });
   res.status(200).json({ message: LOGOUT_SUCCESS_MESSAGE });
